@@ -1,0 +1,103 @@
+#include "stdio.h"
+#include "time.h"
+
+const char *ascii_table[10][5] = {
+        {
+                " 0000 ",
+                "00  00",
+                "00  00",
+                "00  00",
+                " 0000 "
+        },
+        {
+                "1111  ",
+                "  11  ",
+                "  11  ",
+                "  11  ",
+                "111111"
+        },
+        {
+                " 2222 ",
+                "22  22",
+                "   22 ",
+                "  22  ",
+                "222222"
+        },
+        {
+                " 3333 ",
+                "33  33",
+                "   333",
+                "33  33",
+                " 3333 "
+        },
+        {
+                "44  44",
+                "44  44",
+                "444444",
+                "    44",
+                "    44"
+        },
+        {
+                "555555",
+                "55    ",
+                "55555 ",
+                "    55",
+                "55555 "
+        },
+        {
+                " 6666 ",
+                "66    ",
+                "66666 ",
+                "66  66",
+                " 6666 "
+        },
+        {
+                "777777",
+                "   77",
+                "  77",
+                " 77",
+                "77"
+        },
+        {
+                " 8888 ",
+                "88  88",
+                " 8888 ",
+                "88  88",
+                " 8888 "
+        },
+        {
+                " 9999 ",
+                "99  99",
+                " 99999",
+                "    99",
+                " 9999 "
+        }
+};
+
+int main() {
+    time_t unix_time = time(NULL);
+    struct tm *now = localtime(&unix_time);
+
+    int hour = now->tm_hour;
+    int min = now->tm_min;
+
+    int hour_first_piece = hour / 10;
+    int hour_second_piece = hour % 10;
+
+    int min_first_piece = min / 10;
+    int min_second_piece = min % 10;
+
+    for (int i = 0; i < 5; ++i) {
+        printf("%s\t%s\t", ascii_table[hour_first_piece][i], ascii_table[hour_second_piece][i]);
+
+        if (i == 1 || i == 3) {
+            printf("0\t");
+        } else {
+            printf(" \t");
+        }
+
+        printf("%s\t%s\n", ascii_table[min_first_piece][i], ascii_table[min_second_piece][i]);
+    }
+
+    return 0;
+}
