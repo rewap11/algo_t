@@ -1,0 +1,15 @@
+#include "stdio.h"
+#include "math.h"
+
+int main() {
+    int radius;
+
+    printf("Enter a radius of circle\n");
+    printf(" > ");
+    scanf("%d", &radius);
+
+    printf("Length of the circle with radius %d is %f\n", radius, (2 * M_PI * radius));
+    printf("Area of the circle with radius %d is %f\n", radius, (M_PI * radius * radius));
+
+    return 0;
+}
