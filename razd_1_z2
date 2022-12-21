@@ -1,0 +1,39 @@
+#include "stdio.h"
+#include "math.h"
+
+int main() {
+    int a_point[2];
+    int b_point[2];
+    int c_point[2];
+
+    printf("Enter a coordinates of a first point\n");
+    printf("X > ");
+    scanf("%d", &a_point[0]);
+    printf("Y > ");
+    scanf("%d", &a_point[1]);
+
+    printf("Enter a coordinates of a second point\n");
+    printf("X > ");
+    scanf("%d", &b_point[0]);
+    printf("Y > ");
+    scanf("%d", &b_point[1]);
+
+    printf("Enter a coordinates of a third point\n");
+    printf("X > ");
+    scanf("%d", &c_point[0]);
+    printf("Y > ");
+    scanf("%d", &c_point[1]);
+
+    float ab_length = sqrtf(powf((a_point[0] - b_point[0]), 2) + powf((a_point[1] - b_point[1]), 2));
+    float bc_length = sqrtf(powf((b_point[0] - c_point[0]), 2) + powf((b_point[1] - c_point[1]), 2));
+    float ca_length = sqrtf(powf((c_point[0] - a_point[0]), 2) + powf((c_point[1] - a_point[1]), 2));
+
+    float perimeter = ab_length + bc_length + ca_length;
+    printf("Perimeter of the triangle is %f\n", perimeter);
+
+    float half_perimeter = perimeter / 2;
+    float area = sqrtf( half_perimeter * (half_perimeter - ab_length) * (half_perimeter - bc_length) * (half_perimeter - ca_length) );
+    printf("Area of the triangle is %f\n", area);
+
+    return 0;
+}
